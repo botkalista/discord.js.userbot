@@ -10,8 +10,7 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| client | <code>any</code> |  | client instance of new Discord.Client |
-| [node_modules_path] | <code>string</code> | <code>&quot;../node_modules&quot;</code> | relative path to your node_modules | default `../node_modules` |
+| client | <code>Client</code> | <code>undefined</code> | client instance of new Discord.Client |
 
 ## Example
 
@@ -21,8 +20,6 @@ const allowUserBotting = require('discord.js.userbot');
 const client = new Discord.Client();
 // Remember to set correct node_modules_path if it's not working.
 allowUserBotting(client);
-//or
-allowUserBotting(client,'my_node_modules_folder_path');
 client.login('TOKEN');
 ```
 
