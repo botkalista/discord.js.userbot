@@ -17,12 +17,12 @@
  * 
  * 
  * @param {any} client - client instance of new Discord.Client
- * @param {string} [node_modules_path=../node_modules]  - relative path to your node_modules | default `../node_modules`
+ * @param {string} [node_modules_path=../]  - relative path to your node_modules | default `../`
  */
-function allowUserBotting(client, node_modules_path = '..') {
+function allowUserBotting(client, node_modules_path = '../') {
 
     client.ws.connect = async function () {
-        const WebSocketShardClass = await import(node_modules_path + '/discord.js/src/client/websocket/WebSocketShard.js');
+        const WebSocketShardClass = await import(node_modules_path + 'discord.js/src/client/websocket/WebSocketShard.js');
         const WebSocketShard = WebSocketShardClass.default;
 
         const { url: gatewayURL } = await this.client.api.gateway.get().catch(error => {
