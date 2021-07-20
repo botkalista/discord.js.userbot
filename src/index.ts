@@ -1,3 +1,4 @@
+import { Client } from "discord.js";
 
 /**
  * 
@@ -17,16 +18,11 @@
  * 
  * 
  * client.login('TOKEN');
- * 
- * 
- * @param {import('discord.js').Client} client - client instance of new Discord.Client
  */
-function allowUserBotting(client) {
-    client.rest.getAuth = function () {
+export default function allowUserBotting(client: Client) {
+    (client as any).rest.getAuth = function () {
         const token = this.client.token || this.client.accessToken;
         if (token) return `${token}`;
         throw new Error('TOKEN_MISSING');
     }
 }
-
-module.exports = allowUserBotting;
